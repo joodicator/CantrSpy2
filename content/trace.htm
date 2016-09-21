@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+    	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    	<title>CantrSpy - Trace</title>
+		<script src="header.js" type="text/javascript" charset="UTF-8" />
+        <script type="text/javascript">
+            window.opener.trace = method(window, function (message, type) {
+                var element = document.createElement("div");
+                element.className = "message " + type;
+                var text = document.createTextNode(message);
+                element.appendChild(text);
+                var container = document.createElement("div");
+                container.appendChild(element);
+                document.body.appendChild(container);
+            });
+            window.onload = function () {
+                nativeWindow.activate();
+            };
+        </script>
+        <style type="text/css">
+            body {
+                font-family: Lucida Console, monospace;
+                background-color: #040;
+                color: #000;
+            }
+        	.message {
+                display:inline-block;
+                white-space:pre;
+                background-color: #4A4;
+                margin:1em 1em 0 1em;
+                border:2px solid black;
+                padding:0.5em;
+            }
+            .message.request { font-weight: bold; }
+            .message.response { margin-top:-1px; }
+        </style>
+    </head>
+    <body>
+    </body>
+</html>

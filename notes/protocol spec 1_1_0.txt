@@ -1,0 +1,109 @@
+CantrSpy Client-Server Communication Protocol, version 1.1.0.
+Specification, by joo <joseph.crowe@live.co.uk>.
+
+
+=== Notes ===
+
+* "Informal" BNF-style notation is used in this document to describe the protocol. Sequences of characters
+  enclosed in double quotes should be taken as literal values. All other text is either descriptive or symbolic.
+  
+* \n means the newline/linefeed character with decimal character reference 10.
+
+* Responses received from the server may include trailing whitespace. This should be ingored.
+
+
+=== Protocol ===
+
+All communication is initiated by the client in the form of a request, followed by a response from the server.
+Requests are made using the HTTP GET method to a script residing on the server. The basic request format is:
+
+REQUEST_URL ::= "/app.getevents2.php?id=" PLAYER_ID "&" FURTHER_PARAMETERS "&ver=1.1.0."
+
+Where PLAYER_ID is ID associated with the account for which details are being requested, and FURTHER_PARAMETERS
+depends on the type of request. The version number is fixed for any particular version of the protocol. There are
+two types of request:
+
+
+(1) A public-key request, which should be made initially by the client at the beginning of a session (a session
+typically lasting for as long as the application is active), for which:
+
+FURTHER_PARAMETERS ::= "requestkey=1"
+
+One of the following responses will be received from the server:
+
+    (a) RESPONSE_BODY ::= "ERROR Hacking attempt"
+   
+        If incorrect parameters are supplied, or the user credentials are incorrect.
+    
+    (b) RESPONSE_BODY ::= "ERROR Wrong version" 
+   
+        If the wrong protocol version is specified.
+    
+    (d) RESPONSE_BODY ::= EXPONENT \n MODULUS \n MAXDIGITS
+        
+        This should match the regular expression /^([\dA-F]+)\n([\dA-F]+)\n(\d+)$/, and the three parameters
+        correspond to a jCryptionKeyPair, to be used for subsequent encryption.
+
+
+(2) A character list request, which can only be made once the public key is obtained, as part of it is encrypted,
+for which:
+
+FURTHER_PARAMETERS ::= "pass=" CIPHERTEXT
+
+CIPHERTEXT should be the password corresponding to PLAYER_ID, encrypted using RSA in the same format as the
+jCryption library, with the public-key received in the previous stage.
+
+One of the following responses will be received from the server:
+    
+    (a) RESPONSE_BODY ::= "ERROR Hacking attempt"
+        
+        If incorrect parameters are supplied, or the user credentials are incorrect (so if this is received it is
+        best to assume that the wrong username/password was specified).
+    
+    (b) RESPONSE_BODY ::= "ERROR Wrong version"
+    
+        If the wrong protocol version is specified.
+        
+    (c) RESPONSE_BODY ::= "BAD LOGIN"
+    
+        If the user credentials are incorrect.
+        
+    (d) RESPONSE_BODY ::= "GAME LOCKED"
+    
+        If the game is locked, preventing a normal response.
+    
+    (e) RESPONSE_BODY ::= "OK LIST" CHARACTER_LIST
+    
+        Where:
+        
+        CHARACTER_LIST ::= "" | ( \n CHARACTER_NAME CHARACTER_LIST )
+        
+        Where CHARACTER_NAME is the name, as identified by the player, of a character with new events.
+
+
+=== Example ===
+
+A typical exchange might go as follows:
+
+GET /app.getevents2.php?id=83913&ver=1%2E1%2E0%2E&requestkey=1 HTTP/1.0
+
+10001
+96029d9b2c3e150a582af0012b7f0a95
+19
+
+GET /app.getevents2.php?id=83913&ver=1%2E1%2E0%2E&pass=02a62f5f3281f89c7117b10b220e9a22 HTTP/1.0
+
+BAD LOGIN
+
+GET /app.getevents2.php?id=83913&ver=1%2E1%2E0%2E&pass=88968a4dac97fee3eb4a2f623599095c HTTP/1.0
+
+OK LIST
+Brumblebane Tourniquet
+Thilma Lewis
+Thasyl Ringsgold
+Puppy
+Eirikr
+Xhrobian
+Felicity
+Gregory
+Rigor Mortis

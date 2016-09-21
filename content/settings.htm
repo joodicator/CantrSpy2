@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title local_innerHTML="settingsWindow.title"></title>
+		<link rel="stylesheet" href="settings.css" type="text/css" charset="UTF-8" />
+		<!-- Include Modules -->
+		<script src="app:/modules/AIRAliases.js" type="text/javascript" charset="UTF-8" />
+		<!-- Include Application Components -->
+		<script src="header.js" type="text/javascript" charset="UTF-8" />
+		<script src="settings.js" type="text/javascript" charset="UTF-8" />
+    </head>
+    <body>
+        <div id="container">
+            <fieldset class="v-spaced"><legend local_innerHTML="settingsWindow.language"></legend><span>
+                <select id="lang_container">
+                    <option id="lang_default" value="default"></option>
+                </select>
+            </span></fieldset>
+            <fieldset class="v-spaced"><legend local_innerHTML="settingsWindow.options"></legend><span>
+                <div class="v-spaced-small">
+                    <input type="checkbox" id="autoRun" />
+                    <label for="autoRun" local_innerHTML="settingsWindow.autoRun"></label>
+                </div>
+                <div class="v-spaced-small">
+                    <div>
+                        <input type="checkbox" id="autoUpdate" />
+                        <label for="autoUpdate" local_innerHTML="settingsWindow.autoUpdate"></label>
+                    </div>
+                    <div>
+                        <div class="h-spaced-small v-centre">
+                            <button id="checkNow" local_innerHTML="settingsWindow.checkNow"></button>
+                        </div>
+                        <div id="updateIndicator" class="h-spaced-small v-centre" style="visibility:hidden">
+                            <img src="load_24.gif" class="v-centre" width="24" height="24" />
+                            <span class="v-centre" local_innerHTML="settingsWindow.checking"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="v-spaced-small">
+                    <div>
+                        <input type="checkbox" id="flashIcon" />
+                        <label for="flashIcon" local_innerHTML="settingsWindow.flashIcon"></label>
+                    </div>
+                    <div>
+                        <div class="h-spaced">
+                            <input type="radio" name="flash" value="indefinite" id="flash_indefinite">
+                            <label for="flash_indefinite" local_innerHTML="settingsWindow.flashIndefinitely"></label>
+                        </div>
+                        <div class="h-spaced">
+                            <input type="radio" name="flash" value="definite" id="flash_definite">
+                            <label for="flash_definite" local_innerHTML="settingsWindow.flashDurationPrefix"></label>
+                            <input type="text" id="flashDuration" value="0" style="width:35px"/>
+                            <label for="flash_definite" local_innerHTML="settingsWindow.flashDurationSuffix"></label>
+                        </div>
+                    </div>
+                </div>
+				<div class="v-spaced-small">
+                    <input type="checkbox" id="useSecure" />
+                    <label for="useSecure" local_innerHTML="settingsWindow.useSecure"></label>
+				</div>
+            </span></fieldset>
+            <fieldset class="v-spaced"><legend local_innerHTML="settingsWindow.iconStyle"></legend><span>
+                <div class="h-spaced h-centre">
+                    <label for="iconStyle_circle"><img src="app:/icons/circle/alert/32.png" width="32" height="32" /></label>
+                    <br />
+                    <input type="radio" name="iconstyle" value="circle" id="iconStyle_circle">
+                </div>
+                <div class="h-spaced h-centre">
+                    <label for="iconStyle_square"><img src="app:/icons/square/alert/32.png" width="32" height="32" /></label>
+                    <br />
+                    <input type="radio" name="iconstyle" value="square" id="iconStyle_square">
+                </div>
+            </span></fieldset>
+            <fieldset class="v-spaced"><legend local_innerHTML="settingsWindow.tickTimings"></legend><span>
+                <div class="v-spaced-small">
+                    <input type="checkbox" id="ticksMenuItem" />
+                    <label for="ticksMenuItem" local_innerHTML="settingsWindow.ticksMenuItem"></label>
+                </div>
+                <div class="v-spaced-small">
+                    <input type="checkbox" id="ticksAutoOpen" />
+                    <label for="ticksAutoOpen" local_innerHTML="settingsWindow.ticksAutoOpen"></label>
+                </div>
+                <div class="v-spaced-small">
+                    <button id="ticksLaunch" local_innerHTML="settingsWindow.ticksLaunch"></button>
+                </div>
+            </span></fieldset>
+            <div class="v-spaced" style="text-align:right">
+                <button id="closeButton" local_innerHTML="settingsWindow.close"></button>
+            </div>
+        </div>
+    </body>
+</html>

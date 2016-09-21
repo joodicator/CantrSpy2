@@ -1,0 +1,28 @@
+﻿body {
+	margin:0px;
+	background-color:#040;
+	color:#FFF;
+	font-size:11pt;
+	font-family:Verdana, sans-serif;
+}
+
+#container {
+    padding:10px;
+    white-space:nowrap;
+    display:inline-block;
+}
+
+.v-spaced { margin-top:16px; }
+.v-spaced-small { margin-top:8px; }
+.v-spaced:first-child, .v-spaced-small:first-child { margin-top:0px; }
+
+.h-spaced { margin-left:10px; display:inline-block; }
+.h-spaced-small { margin-left:5px; display:inline-block; }
+.h-spaced:first-child, .h-spaced-small:first-child { margin-left:0px; }
+
+.h-centre { text-align:center; }
+.h-centre > * { text-align:left; }
+
+.v-centre > * { vertical-align:middle; }
+
+button { font-weight:normal; }

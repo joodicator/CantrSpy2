@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<title local_innerHTML="loginWindow.title"></title>
+		<link rel="stylesheet" href="login.css" type="text/css" charset="UTF-8" />
+		<!-- Include Modules -->
+		<script src="app:/modules/AIRAliases.js" type="text/javascript" charset="UTF-8" />
+		<!-- Include Application Components -->
+		<script src="header.js" type="text/javascript" charset="UTF-8" />
+		<script src="login.js" type="text/javascript" charset="UTF-8" />
+	</head>
+	<body>
+        <div id="container">
+            <div id="statusContainer"></div>
+            <form id="mainForm"><table id="mainTable">
+                <tr>
+                    <td local_innerHTML="loginWindow.playerID"></td>
+                    <td><input id="playerID" type="text" /></td>
+                </tr>
+                <tr>
+                    <td local_innerHTML="loginWindow.password"></td>
+                    <td><input id="password" type="password" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <table class="subTable">
+                            <tr valign="bottom">
+                                <td align="left">
+                                    <input type="checkBox" id="rememberDetails" />
+                                    <label for="rememberDetails" local_innerHTML="loginWindow.rememberDetails"></label>
+                                </td>
+                                <td align="right">
+                                    <input type="submit" id="loginButton" local_value="loginWindow.loginButton" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table></form>
+            <div id="bottomContainer">
+                <input type="button" id="settings" local_value="loginWindow.settings" />
+            </div>
+        </div>
+		<div id="metaContainer"></div>
+	</body>
+</html>

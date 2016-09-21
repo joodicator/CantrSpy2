@@ -1,0 +1,192 @@
+Version 2.9.0
+    + Added an option to "Connect through SSL/TLS", enabled by default, due to recently-added HTTPS support on Cantr's server.
+        + There are plans to require the use of SSL/TLS in the future, after which CantrSpy will likely not work without this.
+        + It is possible (but unlikely) that Cantr will cease to support SSL/TLS, in which case CantrSpy will only work when this is disabled.
+    + Changed to a new publication certificate, since the previous certificate expired.
+        + Users of previous versions must manually uninstall the old version, then install the new version.
+        + Settings and saved login details from the old version will not be present in the new version.
+        + Certain previous versions (without a digitally signed timestamp) will no longer work, while others may work.
+
+Version 2.8.5
+    + Fixed an error where certain server-side cookies prevented the "open player page" function from working.
+    . Changed "debug" to point to joo.freehostia.com instead of localhost.
+
+Version 2.8.4
+    + Added a Polish translation of the application's meta-description.
+    + Added Turkish localisation.
+    + Fixed an incompatibility with the player login process introduced by recent server-side changes.
+    - Disabled word-wrapping in settings window and bound window width to content width.
+    - Modified modules/AIRLocalizer.js to allow empty strings to be defined in resource bundles.
+
+Version 2.8.3
+    + Added Portugese localisation.
+    + Added Polish localisation.
+    - Added a "-- trace" command argument which starts CantrSpy with a window showing the main HTTP stream.
+
+Version 2.8.2
+    - As a temporary fix for certain Linux distributions, changed the password storage mechanism to an alternative to the EncryptedLocalStore offered by AIR.
+    - Fixed an error which could occur when repeatedly logging in and out while the icon is flashing.
+
+Version 2.8.1
+    + Corrected some errors in the Spanish translation.
+
+Version 2.8.0
+    + Single-clicking the tray icon on Windows and Linux machines now has two functions:
+        + when the icon is flashing, it will only stop the icon from flashing;
+        + otherwise, it will perform the usual task of forcing an immediate update.
+    + Added an option to change the user interface language.
+        + By default, the operating system's locale will be used to determine the language.
+        + Spanish and English are currently available as selectable languages.
+        + Added Spanish strings to the application descriptor which can be used by the installer in Spanish locales.
+    + Implemented the capability for the icon to flash either indefinitely or for a limited period of time in response to a character newly having new events.
+        + The parameters for this behaviour can be set from the settings window.
+        + The flashing can be stopped using the icons's context menu, or by clicking the icon as detailed above.
+        + The flashing will also stop if the character in question is found to no longer have new events, having the effect that the icon will continue to flash until the new events are viewed (or the maximum time period is exceeded, if one is set).
+    + Rearranged some context menu items.
+    + Made changes concerning the Tick Timings window:
+        + There is now an option in the settings window to open the ticks window when the application starts.
+        + The ticks window is now resizable (size and position will also be remembered)
+        + The ticks window can now be opened from the settings window.
+        + Settings concerning the ticks window have their own group in the settings window.
+    + It can now be detected when the game is locked. When this is the case, an appropriate message will be displayed.
+    - Various minor code adjustments.
+
+Version 2.7.0
+    + Implemented a settings window, openable from the login window and from the icon menu.
+    + Changed the appearance of the login window for consistency and moved the "Run on startup" option from the login window to the settings window.
+    + Implemented a window displaying the tick timings of Cantr, openable from the icon menu when enabled from the settings dialog.
+    + Added an option to disable automatic update checking, which is accessible from the settings dialog.
+    + Added an option to manually check for updates, accessible from the same location as the checkbox.
+    + Added the option to select an additional style of icon, which does not use transparency, for compatibility with Linux operating systems where the transparent icon was not rendered correctly.
+    - Patched a number of memory leaks in the AIR runtime, significantly improving memory consumption stability, by:
+        - implementing an explicit periodic garbage collection process;
+        - wherever possible, rewriting code to reuse already initialised objects instead of creating new ones; and
+        - keeping already loaded icon files in memory instead of discarding them when they are unused.
+    - Implemented a configurationManager class to allow preferences and other persistent values to be kept by the application.
+    - Made changes to the windowManager class to allow implementation of Ticks window.
+    - Removed the 128×128 icon files; added 24×24 icons.
+    - Various minor code changes.
+
+Version 2.6.9
+    + Implemented the ApplicationUpdaterUI class to allow automated update checking. Currently the application will check for an updated version every time it is launched.
+
+Version 2.6.8
+    - Made a correction to the way server requests are made.
+    
+Version 2.6.7
+    - Minor UI adjustment.
+    - Changed protocol version to 1.1.0.
+
+Version 2.6.6
+    - Implemented revised security protocol.
+    
+Version 2.6.5
+    + Implemented new security protocol to fix incompatibility caused by server-side changes.
+    
+Version 2.6.0
+    + Added capability to "update now" which causes the application to immediately send an update request to the server.
+        + Added application icon right-click menu entry for this function.
+        + This can also be triggered by single-clicking the system tray icon (Windows/Linux only).
+        - The icon will change to a blank circle to indicate that the request is in progress.
+        - The user cannot initiate a new request if one is already in progress.
+        - Updates will still occur automatically, however the timer is reset after a user-initiated update.
+    + A player page open request can now be initiated by double-clicking the system tray icon (Windows/Linux only). This will perform exactly the same action as selecting the corresponding application icon menu item.
+    - Made some minor structural and interface related changes.
+
+Version 2.5.2
+    + Made verbose error messages always display, even if they exceed the tooltip limit.
+    + Added descriptive error message for generic connection failure.
+
+Version 2.5.1
+    + Added checkbox on login window enabling user credentials to be saved.
+        + When the application is started with details saved, no login window will be displayed - the application will automatically begin logging in.
+        + The saved details can be deleted by logging out and unchecking the "remember details" checkbox.
+        + Details are saved when a login attempt is made with "remember details" checked.
+    - Fixed some minor errors.
+
+Version 2.5.0
+    + Added checkbox on login window which enables application to be set to run on startup (when that specific user logs in, technically).
+
+Version 2.4.8
+    + Fixed an error which could occur when opening the player page after logging out then logging in again.
+    + The version number is displayed in the bottom-left corner of the login window.
+
+Version 2.4.7
+    + Fixed an error which occured in Windows XP when the desktop is composed of multiple screens, in which the application window is centered on the top-left corner of the main screen. The window is now always created in the centre of the primary screen. Note: compatibility has not been tested yet on other operating systems.
+    - changes.log is now included with the installation package (and can be found on the root of the installation directory).
+
+Version 2.4.5
+    + Added icons to show the number of active characters from 1 to 15
+    - Changed the behaviour of the iconManager: a set of icons is loaded into memory as a result of being set as the current icons, and icons are unloaded when they are no longer directly in use
+    + Prevented any tray icon from being created during a login sequence involving an open login window
+    - Changed update request method to POST for greater security
+    - Fixed a memory leak in which references were kept to instances of the login window after they were closed
+    + Added option to logout to the application icon menu
+    - Moved menu-handling functionality to a menuManager
+
+Version 2.4.0
+    - Encoded all files as UTF-8 and changed HTML files to use strict XHTML
+    - Implemented the AIRLocalizer API for strings
+    + Changed some strings, making them more concise
+    - Fixed an inconsistency in which www.cantr.net was used as the domain for opening the player page regardless of the host setting
+    - Separated login.htm into login.css, login.js and login.htm
+    - Changed login.htm to resize its self dynamically based on its content
+    + Added a status field to the login window
+    - Made some miscellaneous code changes
+    + Changed the server response "ERROR Hacking attempt" to trigger an invalid login error (due to the fact that a player ID containing non-digit characters triggered such an error).
+    + Caused the login window to stay open during a login attempt, closing when a network response is recieved that does not indicate incorrect details. If the user details are incorrect, this is reported to the user who has the opportunity to re-enter them.
+
+Version 2.3.0
+    + Added command to open the user's player page in the native browser
+    - Created global settings object to hold constant values
+        - Moved the remote server definition to settings
+        - Moved the update timer interval to settings
+    + Created a global string container from which all localisable strings are defined
+    - Some miscellaneous code improvements
+
+Version 2.2.4
+    - Made some optimisations to the code using jslint
+
+Version 2.2.3
+    + Fixed a bug in which the Player ID value was not properly encoded in the request URL
+    + Fixed a bug in which the list of character names was not properly formed in the tooltip
+    - Enabled a debugging mode which is activated by passing "debug" as a parameter to the application
+        - In debug mode, the client queries the local host insteaad of the remote server
+        - Additionally, the queries are made much more frequently - once every 5 seconds
+
+Version 2.2.2
+    + Made windows created by windowManager minimisable
+    - Moved all code from main.htm into main.js
+    - Moved all manager objects into new file main.classes.js
+    - Created new Object updateManager and moved update handling code into it
+    - Moved status icon initialisation into iconManager class
+    - Moved tooltip setting logic into iconManager class
+        - Implemented capability to show tooltips selectively based on MAX_TOOLTIP_LENGTH
+        + Changed status tooltips to utilise this capability
+    - Creates function appExit to handle application shutdown
+
+Version 2.2.1
+    + Fixed several typos in main.htm which caused errors
+
+Version 2.2.0
+    + Main window has content for testing purposes
+
+Version 2.1.0
+    + Login Screen shown initially with Player ID field, Password field and Login button
+    + Application icon shown after login which changes to represent current status
+    + Possible states are:
+        + Blank, connecting
+        + Exclamation mark, new events
+        + Ellipsis, no new events
+        + Question mark, error
+    + Tray icon has tooltip which gives information on current status
+    + When a single character has new events, their name will be shown. Otherwise, a number is shown
+
+TO DO:
+    - Change tick timings to be shown by default, or always shown.
+    - Integrate list formatter utility.
+    - Allow changing of password without logging out.
+    - Implement window to show feedback while logged in
+        - Enable ignoring of characters
+    - Allow connecting through a proxy.
+    - Add button in settings window to clear all saved data.
