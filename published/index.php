@@ -16,20 +16,9 @@ if ($option == 'update' && $_GET['key'] != '2014') {
 <version>$version</version><url>$package</url><description><![CDATA[$notes]]></description>
 </update>
 •;
-    file_put_contents('update.log',
-    $_SERVER['REQUEST_TIME'].' '.
-    $_SERVER['REMOTE_ADDR' ].' '.
-    $_SERVER['REQUEST_URI' ]."\n",
-    FILE_APPEND);
 }
 else if ($option === 'package') {
     header('Location: ' . $air);
-    
-    file_put_contents('package.log',
-    $_SERVER['REQUEST_TIME'].' '.
-    $_SERVER['REMOTE_ADDR' ].' '.
-    $_SERVER['REQUEST_URI' ]."\n",
-    FILE_APPEND);
 }
 else {
     if ($option === null) $option = "latest";
