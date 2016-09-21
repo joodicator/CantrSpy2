@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <application xmlns="http://ns.adobe.com/air/application/1.5.1">
-	<id>joo.cantr.cantrspy</id>
-	<filename>CantrSpy</filename>
-	<name>CantrSpy</name>
+	<id>joo.cantr.cantrspy.intro</id>
+	<filename>CantrSpy intro</filename>
+	<name>CantrSpy intro</name>
 	<version>2.9.0</version>
 	<description>
 		<text xml:lang="en">CantrSpy is an unofficial accessory to the online game Cantr II, which runs in the background on a player's system, providing them with real-time feedback about the status of their characters through a tray or dock icon. This version was created by joo, based on the previous work of Cantr Programming Department member marol.</text>
@@ -16,8 +16,8 @@
 		<visible>false</visible>
 	</initialWindow>
 	<icon>
-		<image16x16>icons/circle/alert/16.png</image16x16>
-		<image32x32>icons/circle/alert/32.png</image32x32>
-		<image48x48>icons/circle/alert/48.png</image48x48>
+		<image16x16>icons/circle/16px/alert.png</image16x16>
+		<image32x32>icons/circle/32px/alert.png</image32x32>
+		<image48x48>icons/circle/48px/alert.png</image48x48>
 	</icon>
 </application>

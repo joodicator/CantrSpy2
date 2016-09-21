@@ -1,8 +1,8 @@
 <?php
 $option = key($_GET);
-$air_path = 'http://joo.uk.to/cantr/cantrspy/air/';
+$air_path = 'http://joo.uk.to/cantr/cantrspy/intro/air/';
 $version = '2.9.0';
-$air = $air_path . 'cantrspy_2_9_0.air';
+$air = $air_path . 'cantrspy_intro_2_9_0.air';
 
 if ($option == 'update' && $_GET['key'] != '2014') {
     // Updating from an incompatible version; offer nothing.
@@ -51,21 +51,21 @@ echo <<<•
 <html><head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <link rel="icon" href="icon.ico" />
-    <title>CantrSpy Installation Page</title>
+    <title>CantrSpy intro Installation Page</title>
     <script language="JavaScript" type="text/javascript"><!--
         var requiredMajorVersion = 9, requiredMinorVersion = 0, requiredRevision = 115;
     // --></script>
     <style type="text/css"><!--
         .centred { position: fixed; display: table; width: 100%; height: 100% }
         .centred > * { display: table-cell; text-align: center; vertical-align: middle }
-        body { font-family: Verdana, Arial, sans-serif; background-color: #004000; color: #FFF; }
+        body { font-family: Verdana, Arial, sans-serif; background-color: #661100; color: #FFF; }
         :link, :visited { text-decoration: none; color: #FFF; }
         .link { text-decoration: underline; font-weight: bold; }
     --></style>
 </head><body>
     <span class="centred"><span>
         <div class="title" style="font-size: 24pt; font-weight: bold; padding-bottom: 20px">
-            CantrSpy $version
+            CantrSpy intro $version
         </div>
 •;
     if (array_key_exists("static", $_GET)) {
@@ -79,7 +79,7 @@ echo <<<•
         if (DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision)) {
             AC_FL_RunContent('codebase', 'http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab',
             'width','217', 'height','180', 'id','badge', 'align','middle', 'src','assets/badge',
-            'quality','high', 'bgcolor','#004000', 'name','badge', 'allowscriptaccess','always',
+            'quality','high', 'bgcolor','#661100', 'name','badge', 'allowscriptaccess','always',
             'pluginspage','http://www.macromedia.com/go/getflashplayer',
             'flashvars','appname=CantrSpy&appurl=$air&airversion=2.5&imageurl=assets/badge.png&buttoncolor=000000&messagecolor=FFFFFF',
             'movie','assets/badge');

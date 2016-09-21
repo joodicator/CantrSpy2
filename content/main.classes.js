@@ -68,7 +68,13 @@ var updateManager = {
             this.updateLoader.addEventListener(air.SecurityErrorEvent.SECURITY_ERROR, method(this, "updateEvent"));
             if (settings.trace) {
                 this.updateLoader.addEventListener(air.Event.OPEN, method(this, function () {
-                    trace(this.updateRequest.url + "?" + this.updateRequest.data.toString(), "request");
+                    var action = this.updateRequest.url + "?" + this.updateRequest.data.toString();
+                    var headers = "User-Agent: " + this.updateRequest.userAgent + "\n";
+                    for (var i=0; i < this.updateRequest.requestHeaders.length; ++i) {
+                        var header = this.updateRequest.requestHeaders[i];
+                        headers += header.name + ": " + header.value + "\n";
+                    }
+                    trace(action + "\n\n" + headers, "request");
                 }));
                 this.updateLoader.addEventListener(air.Event.COMPLETE, method(this, function () {
                     trace(this.updateLoader.data.toString(), "response");
@@ -395,7 +401,7 @@ var iconManager = new function () {
                 // The named icon exists; begin loading the corresponding files
                 this.currentIcon = name;
                 for (var index in this.sizes) {
-                    var url = "app:/icons/" + iconStyle + "/" + name + "/" + this.sizes[index] + ".png";
+                    var url = "app:/icons/" + iconStyle + "/" + this.sizes[index] + "px/" + name + ".png";
                     if (url in this.cache) {
                         // The bitmapData is already cached, so the icon does not need to be loaded
                         this.completed.push(this.cache[url]);
